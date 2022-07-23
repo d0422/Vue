@@ -1,12 +1,10 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div>
-    <h4 :style="서타일">XX원룸</h4>
-    <p>{{price1}}만원</p>
+  <div class="menu">
+    <a v-for="메뉴목록 in 메뉴들" :key="메뉴목록">{{메뉴목록}}</a>
   </div>
   <div>
-    <h4 >XX원룸</h4>
-    <p >{{price2}}만원</p>
+    <h4 v-for ="동네 in 동네들" :key="동네">{{동네}}원룸</h4>
+    <p>50만원</p>
   </div>
 </template>
 
@@ -15,9 +13,8 @@ export default {
   name: 'App',
   data(){
     return{
-      price1:60,
-      price2:90,
-      서타일 :"color : tomato",
+      메뉴들 : ["Home","Shop","About"],
+      동네들:["역삼동","천호동","마포구"],
     }
   },
   components: {
@@ -32,6 +29,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.menu{
+  background: darkslateblue;
+  padding:15px;
+  border-radius: 5px;
+}
+.menu a{
+  color : white;
+  padding: 10px;
 }
 </style>
