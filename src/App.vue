@@ -5,7 +5,10 @@
   <div>
     <h4 v-for ="동네 in 동네들" :key="동네">{{동네}}원룸</h4>
     <p>50만원</p>
+    <button @click="신고수올리기">허위매물신고</button>
+    <span>신고수 : {{신고수}} </span>
   </div>
+  <button v-on:click="신고수초기화하기">Reset</button>
 </template>
 
 <script>
@@ -13,9 +16,19 @@ export default {
   name: 'App',
   data(){
     return{
+      신고수: 0,
       메뉴들 : ["Home","Shop","About"],
       동네들:["역삼동","천호동","마포구"],
     }
+  },
+  methods :{
+    신고수올리기(){
+      this.신고수=this.신고수+1;
+    },
+    신고수초기화하기(){
+      this.신고수=0;
+    }
+    
   },
   components: {
   }
