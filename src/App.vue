@@ -9,22 +9,23 @@
   <div class="menu">
     <a v-for="메뉴목록 in 메뉴들" :key="메뉴목록">{{메뉴목록}}</a>
   </div>
-  <div>
-    <div v-for="i in 3" :key="i" @click="모달창열렸냐=true">
-      <h4 >{{동네들[i]}} 원룸</h4>
-      <img src="./images/room0.jpg"/>
-      <button @click="신고수[i]++">신고</button>
-      <div>신고수 : {{신고수[i]}} </div>
+  <div class="container">
+    <div v-for="i in data" :key="i" @click="모달창열렸냐=true" class="content">
+      <h4 >{{i.title}}</h4>
+      <p>{{i.price}}</p>
+      <p>{{i.content}}</p>
+      <img :src="i.image" alt="img"/>
     </div>
   </div>
-  <button v-on:click="신고수초기화하기">Reset</button>
 </template>
 
 <script>
+import data from "./assets/data.js";
 export default {
   name: 'App',
   data(){
     return{
+      data : data,
       모달창열렸냐 : false,
       신고수: [0,0,0,0],
       메뉴들 : ["Home","Shop","About"],
@@ -48,6 +49,12 @@ export default {
 <style>
 body{
   margin:0;
+}
+.container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 div{
   box-sizing:border-box;
@@ -76,9 +83,17 @@ div{
   padding:20px;
 }
 .white-bg{
+  position:relative;
+  top: 50%;
   width:100%;
   background:white;
   border-radius:8px;
   padding:20px;
+}
+.content{
+  width: 50%;
+}
+.content img{
+  width: 100%;
 }
 </style>
